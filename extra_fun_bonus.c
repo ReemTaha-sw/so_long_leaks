@@ -6,7 +6,7 @@
 /*   By: rosman <rosman@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 18:14:26 by rosman            #+#    #+#             */
-/*   Updated: 2024/02/13 21:47:03 by rosman           ###   ########.fr       */
+/*   Updated: 2024/02/17 19:58:22 by rosman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 int	loop_hook_b(t_data *data)
 {
 	animate_enemy(data);
-	delay(8000);
+	delay(3000);
+	animate_collectibles(data);
+	delay(5000);
 	return (0);
 }
 
@@ -32,6 +34,8 @@ void	update_player_b(t_data *data, char *img, int y, int x)
 {
 	data->man.mg = mlx_xpm_file_to_image(data->mlx,
 			img, &data->pix_size, &data->pix_size);
+	if (!data->man.mg)
+		exit_game(data);
 	update_game_state_b(data, y, x);
 }
 
@@ -40,7 +44,6 @@ void	update_game_state_b(t_data *data, int dx, int dy)
 	int			new_x;
 	int			new_y;
 	static int	steps;
-	char		*steps_string;
 
 	new_x = data->man.x + dx;
 	new_y = data->man.y + dy;
@@ -57,10 +60,7 @@ void	update_game_state_b(t_data *data, int dx, int dy)
 			exit_game(data);
 		enemy(data, new_x, new_y);
 		draw_b(data);
-		steps_string = ft_itoa(steps);
-		mlx_string_put(data->mlx, data->win, 140, 20, 0x00ffffff, steps_string);
-		mlx_string_put(data->mlx, data->win, 20, 20, 0x00ffffff, "Number of steps :");
-		free(steps_string);
+		number_in_win(steps, data);
 		ft_printf("Number of steps : %i\n", steps);
 	}
 }
@@ -77,6 +77,5 @@ int	key_hook_b(int keycode, t_data *data)
 		update_player_b(data, "assets/mario_front.xpm", 0, PIX_SIZE);
 	else if (keycode == 13 || keycode == 126)
 		update_player_b(data, "assets/mario_back.xpm", 0, -PIX_SIZE);
-	animate_collectibles(data);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rosman <rosman@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 21:09:47 by rosman            #+#    #+#             */
-/*   Updated: 2024/02/13 21:57:59 by rosman           ###   ########.fr       */
+/*   Updated: 2024/02/17 19:43:48 by rosman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	key_hook(int keycode, t_data *data)
 		update_player(data, "assets/mario_front.xpm", 0, PIX_SIZE);
 	else if (keycode == 13 || keycode == 126)
 		update_player(data, "assets/mario_back.xpm", 0, -PIX_SIZE);
-	// animate_collectibles(data);
 	return (0);
 }
 
@@ -38,7 +37,6 @@ int	main(int argc, char *argv[])
 	init_data(&data);
 	read_file(&data, argv[1]);
 	put_map(&data, argv[1]);
-	// data.temp_map = put_map(&data, argv[1]);
 	check_map(&data);
 	data.mlx = mlx_init();
 	data.win = mlx_new_window(data.mlx, PIX_SIZE * data.map_width,
@@ -51,6 +49,5 @@ int	main(int argc, char *argv[])
 	mlx_hook(data.win, 17, 0, exit_game, &data);
 	mlx_hook(data.win, 2, 0, key_hook, &data);
 	mlx_loop(data.mlx);
-	// exit_game(&data);
 	return (0);
 }

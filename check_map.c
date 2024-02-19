@@ -6,7 +6,7 @@
 /*   By: rosman <rosman@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:51:10 by rosman            #+#    #+#             */
-/*   Updated: 2024/02/11 19:16:31 by rosman           ###   ########.fr       */
+/*   Updated: 2024/02/16 21:43:48 by rosman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	dfs(t_data *data, int row, int col)
 		if (new_row >= 0 && new_row < data->map_height
 			&& new_col >= 0 && new_col < data->map_width
 			&& data->map[new_row][new_col] != '1'
+			&& data->map[new_row][new_col] != 'X'
 			&& !data->temp_map[new_row][new_col])
 			dfs(data, new_row, new_col);
 		i++;
@@ -76,7 +77,7 @@ void	is_ber(char *file_name)
 	if (filename_len >= extension_len
 		&& ft_strcmp(file_name + filename_len - extension_len, extension) != 0)
 	{
-		ft_printf("The filename DOES NOT ends with \".ber\"");
+		perror("The filename DOES NOT ends with \".ber\"");
 		exit(1);
 	}
 }
@@ -93,4 +94,13 @@ void	check_map(t_data *data)
 		exit_game(data);
 	}
 	is_valid_map(data->map, data);
+}
+
+void	vaild_img(t_data *data)
+{
+	if (!data->wall_image || !data->collectable_image
+		|| !data->empty_image || !data->exit_image
+		|| !data->exit_locked_image || !data->black_image || !data->enemy_image
+		|| !data->exit.mg)
+		exit_game(data);
 }

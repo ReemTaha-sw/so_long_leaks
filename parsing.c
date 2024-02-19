@@ -6,7 +6,7 @@
 /*   By: rosman <rosman@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 18:43:08 by rosman            #+#    #+#             */
-/*   Updated: 2024/02/11 19:29:32 by rosman           ###   ########.fr       */
+/*   Updated: 2024/02/16 21:09:23 by rosman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	is_rectangle(t_data *data)
 {
-	// size_t		width;
-	size_t		i;
-	int			j;
+	size_t	i;
+	int		j;
 
 	i = 0;
 	if (data->map == NULL || data->map[0] == (void *)0)
@@ -30,7 +29,7 @@ void	is_rectangle(t_data *data)
 			print_error(data, "Not RECTANGLE");
 		i++;
 	}
-	ft_printf("ALL GOOD 👍.\n");
+	ft_printf("IS RECTANGLE👍.\n");
 }
 
 void	check_edges(char **map, size_t height, t_data *data)

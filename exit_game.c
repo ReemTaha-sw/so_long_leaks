@@ -6,7 +6,7 @@
 /*   By: rosman <rosman@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 14:24:19 by rosman            #+#    #+#             */
-/*   Updated: 2024/02/11 21:06:26 by rosman           ###   ########.fr       */
+/*   Updated: 2024/02/17 19:51:15 by rosman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	print_error(t_data *data, char *ms)
 	freeing_map(data);
 	ft_printf("Sorry invalid map 👎.\n");
 	ft_printf("%s.\n", ms);
+	perror("There is some thing wrong");
 	destroy_enemies(data);
 	exit(1);
 }
@@ -62,6 +63,7 @@ int	exit_game(t_data *data)
 	mlx_destroy_window(data->mlx, data->win);
 	freeing_map(data);
 	destroy_enemies(data);
+	ft_printf("GAME OVER 🎊🎉.\n");
 	exit(0);
 	return (0);
 }

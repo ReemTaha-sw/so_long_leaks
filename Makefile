@@ -6,7 +6,7 @@
 #    By: rosman <rosman@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/04 20:20:55 by rosman            #+#    #+#              #
-#    Updated: 2024/02/13 20:47:15 by rosman           ###   ########.fr        #
+#    Updated: 2024/02/17 20:01:14 by rosman           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRC = main.c \
 		init_data.c \
 		update_game.c \
 		enemy.c \
-		ft_itoa.c
+		ft_itoa.c \
+		number_in_screen.c
 
 SRC_B = bonus.c \
 		util.c\
@@ -45,13 +46,13 @@ SRC_B = bonus.c \
 		bonus_update_game.c \
 		enemy.c \
 		extra_fun_bonus.c \
-		ft_itoa.c
+		ft_itoa.c \
+		number_in_screen.c
 		
 
 CC = cc
 
 CFLAGS  = -Wall -Wextra -Werror
-# -g3 -fsanitize=address
 
 MLXLINKER = -Llibx -lmlx -framework OpenGL -framework AppKit
 
@@ -71,13 +72,12 @@ bonus: $(OBJ_B)
 	@ cd ft_printf && make
 	@ cd libx && make
 	$(CC) $(CFLAGS) $(OBJ_B) $(MLXLINKER) $(LIBFTft_printf) -o $(NAME)
-# $(CC) $(CFLAGS) $(OBJ_B) $(MLXLINKER) $(LIBFTft_printf) -o $(NAME) 
 
 all: $(NAME)
 
 clean:
-	cd ft_printf && make clean
-	# @ cd libx && make clean
+	@ cd ft_printf && make clean
+	@ cd libx && make clean
 	rm -f $(OBJ) $(OBJ_B)
 
 fclean: clean
@@ -88,14 +88,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-
-
-
-# cd ft_printf && make
-# @$(MAKE)  -C ./ft_printf
-
-# cd ft_printf && make clean
-# @$(MAKE) clean -C ./ft_printf
-
-# cd ft_printf && make fclean
-# @$(MAKE)  fclean -C ./ft_printf

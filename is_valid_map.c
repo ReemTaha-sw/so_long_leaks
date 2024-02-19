@@ -6,7 +6,7 @@
 /*   By: rosman <rosman@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 21:35:41 by rosman            #+#    #+#             */
-/*   Updated: 2024/02/11 20:24:50 by rosman           ###   ########.fr       */
+/*   Updated: 2024/02/16 20:56:33 by rosman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void	only_once_b(t_data *data)
 	if (counter_p != 1 || counter_e != 1 || data->collectable_num < 1)
 		print_error(data, "More or Non : 'P', 'E', 'C'");
 }
-
 
 void	check_map_bonus(t_data *data)
 {

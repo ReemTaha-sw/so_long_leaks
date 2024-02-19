@@ -6,7 +6,7 @@
 /*   By: rosman <rosman@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 21:04:51 by rosman            #+#    #+#             */
-/*   Updated: 2024/02/11 21:05:55 by rosman           ###   ########.fr       */
+/*   Updated: 2024/02/14 21:16:56 by rosman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ void	animate_enemy(t_data *data)
 	}
 }
 
-
 int	main(int argc, char *argv[])
 {
 	t_data	data;
@@ -102,8 +101,6 @@ int	main(int argc, char *argv[])
 	is_ber(argv[1]);
 	init_data(&data);
 	read_file(&data, argv[1]);
-	// data.map = put_map(&data, argv[1]);
-	// data.temp_map = put_map(&data, argv[1]);
 	put_map(&data, argv[1]);
 	check_map_bonus(&data);
 	data.mlx = mlx_init();
@@ -118,6 +115,5 @@ int	main(int argc, char *argv[])
 	mlx_hook(data.win, 2, 0, key_hook_b, &data);
 	mlx_loop_hook(data.mlx, loop_hook_b, &data);
 	mlx_loop(data.mlx);
-	// exit_game(&data);
 	return (0);
 }

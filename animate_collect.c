@@ -6,7 +6,7 @@
 /*   By: rosman <rosman@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 14:47:08 by rosman            #+#    #+#             */
-/*   Updated: 2024/02/13 21:57:52 by rosman           ###   ########.fr       */
+/*   Updated: 2024/02/15 22:03:36 by rosman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	animate_collectibles(t_data *data)
 			if (data->map[i][j] == COLLECTABLE)
 			{
 				current_image = collectible_frames[collectible_frames_counter];
-				// mlx_clear_window();
 				mlx_put_image_to_window(data->mlx, data->win,
 					mlx_xpm_file_to_image(data->mlx, current_image,
 						&data->pix_size, &data->pix_size),

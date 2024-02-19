@@ -6,7 +6,7 @@
 /*   By: rosman <rosman@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 21:17:25 by rosman            #+#    #+#             */
-/*   Updated: 2024/02/13 20:46:41 by rosman           ###   ########.fr       */
+/*   Updated: 2024/02/17 19:35:17 by rosman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
-// don't
-# include <string.h>
 # include <fcntl.h>
 # include <stddef.h>
 # include <math.h>
@@ -83,7 +81,6 @@ void	at_least_collectable(char **map, char c, t_data *data);
 void	only_once(t_data *data);
 void	is_valid_map(char **map, t_data *data);
 void	is_valid_map_bonus(char **map, t_data *data);
-int		path_valid(t_data *data, int y, int x);
 int		is_everything_reachable(t_data *data);
 void	put_map(t_data *data, char *file);
 void	print_error(t_data *data, char *ms);
@@ -105,7 +102,6 @@ int		key_hook(int keycode, t_data *data);
 int		key_hook_b(int keycode, t_data *data);
 void	add_enemy(t_data *data, int x, int y);
 t_enemy	*create_enemy(int x, int y, int dir, t_data *data);
-// t_enemy	*create_enemy(int x, int y, int dir);
 void	read_file(t_data *data, char *file);
 int		loop_hook_b(t_data *data);
 void	delay(int milliseconds);
@@ -118,5 +114,7 @@ char	*ft_dup( char *s1);
 void	only_once_b(t_data *data);
 void	init_player(t_data *data);
 char	*ft_itoa(int n);
+void	number_in_win(int steps, t_data *data);
+void	vaild_img(t_data *data);
 
 #endif

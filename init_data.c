@@ -6,13 +6,23 @@
 /*   By: rosman <rosman@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 17:50:25 by rosman            #+#    #+#             */
-/*   Updated: 2024/02/11 21:06:40 by rosman           ###   ########.fr       */
+/*   Updated: 2024/02/16 21:51:48 by rosman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	put_p_e(t_data *data, char *p)
+void	put_man(t_data *data, int j, int i)
+{
+	data->man.x = j * data->pix_size;
+	data->man.y = i * data->pix_size;
+	data->man.mg = mlx_xpm_file_to_image(data->mlx, "assets/mario_front.xpm",
+			&data->pix_size, &data->pix_size);
+	if (!data->man.mg)
+		exit_game(data);
+}
+
+void	put_p_e(t_data *data)
 {
 	int	i;
 	int	j;
@@ -24,12 +34,7 @@ void	put_p_e(t_data *data, char *p)
 		while (++j < data->map_width)
 		{
 			if (data->map[i][j] == PACMAN)
-			{
-				data->man.x = j * data->pix_size;
-				data->man.y = i * data->pix_size;
-				data->man.mg = mlx_xpm_file_to_image(data->mlx, p,
-						&data->pix_size, &data->pix_size);
-			}
+				put_man(data, j, i);
 			else if (data->map[i][j] == EXIT)
 			{
 				data->exit.x = j * data->pix_size;
@@ -57,7 +62,8 @@ void	load_assets(t_data *data)
 			"assets/x.xpm", &data->pix_size, &data->pix_size);
 	data->exit.mg = mlx_xpm_file_to_image(data->mlx,
 			"assets/exit/e_full_closed.xpm", &data->pix_size, &data->pix_size);
-	put_p_e(data, "assets/mario_front.xpm");
+	vaild_img(data);
+	put_p_e(data);
 	draw(data);
 }
 
